@@ -1,4 +1,4 @@
-// SPDX-License-License_Identifier: GPL-3.0
+// SPDX-License-License_Identifier: MIT
 pragma solidity ^0.6.6;
 
 import "@chainlink/contracts/src/v0.6/interfaces/AggregatorV3Interface.sol";
@@ -37,12 +37,22 @@ contract FundMe {
     function getPrice() public view returns(uint256) {
         (,int256 answer,,,) = priceFeed.latestRoundData();
         return uint256(answer * 10000000000);
+        // return uint256(answer);
     }
+
 
     function getConversionRate(uint256 ethAmount) public view returns (uint256) {
         uint256 ethPrice = getPrice();
         uint256 ethAmountInUsd = (ethPrice * ethAmount); 
         return ethAmountInUsd;
+    }
+
+    function getEntranceFee() public view returns (uint256) {
+        // minimumUSD
+        uint256 minimumUSD = 50 * 10 ** 18;
+        uint256 price = getPrice();
+        uint256 precision = 1 * 10 ** 18;
+        return (minimumUSD * precision) / price;
     }
 
     modifier onlyOwner {

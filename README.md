@@ -35,5 +35,6 @@ brownie run scripts/deploy.py --network ganache-local
 
 ```
 
-
-
+```
+brownie test
+```
