@@ -1,11 +1,11 @@
-from brownie import FundMe
+from brownie import FundMe, network
 from web3 import Web3
 
 from scripts.helpful_scripts import get_account
 
 # DECIMALS = 8
 # GAS_LIMIT_WEI = 1 * (10 ** DECIMALS)
-GAS_LIMIT_WEI = 6721975
+GAS_LIMIT_WEI = 6721975 
 
 def fund():
     print(list(FundMe))
@@ -24,6 +24,7 @@ def withdraw():
     fund_me = FundMe[-1]
     account = get_account()
     fund_me.withdraw({"from": account})
+    
 
 
 def main():

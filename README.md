@@ -29,7 +29,7 @@ port number : 8545
 ```
 brownie networks list
 # add ganache-local
-brownie networks add Ethereum ganache-local host=http://127.0.0.1:7545 chainid=5777
+brownie networks add Ethereum ganache-local host=http://127.0.0.1:8545 chainid=5777
 # ganache-local 실행
 brownie run scripts/deploy.py --network ganache-local
 
@@ -37,4 +37,5 @@ brownie run scripts/deploy.py --network ganache-local
 
 ```
 brownie test
+brownie test -k <method name>
 ```
