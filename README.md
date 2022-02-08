@@ -39,3 +39,10 @@ brownie run scripts/deploy.py --network ganache-local
 brownie test
 brownie test -k <method name>
 ```
+# mainnet fork
+```
+brownie networks add development mainnet-fork-dev cmd=ganache-cli host=http://127.0.0.1 fork='<ethereum mainnet url - alchemy.com>' accounts=10 mnemonic=brownie port=8545
+```
+```
+brownie run scripts/deploy.py --network mainnet-fork-dev
+```
